@@ -1,0 +1,16 @@
+version: '2'
+services:
+  app:
+    image: autoteyle/puppeteer-stealth:dev
+    build:
+      context: .
+    depends_on:
+      - chrome
+    environment:
+      REMOTE_DEBUGGING_PORT: 9222
+      REMOTE_DEBUGGING_HOSTNAME: chrome
+  chrome:
+    image: autoteyle/chrome-headless:latest
+    environment:
+      REMOTE_DEBUGGING_PORT: 9222
+      REMOTE_DEBUGGING_ADDRESS: 0.0.0.0
